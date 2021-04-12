@@ -170,7 +170,7 @@ main .container {
     max-width: 100%;
 }
 
-.film__card:hover img {
+.film__card:hover .film__poster {
     opacity: 0.4;
 }
 .film__card:hover {
@@ -214,6 +214,15 @@ main .container {
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;  
     overflow: hidden;
+}
+
+.film__language {
+    display: inline-block;
+}
+
+img.film__language {
+    height: 15px;
+    vertical-align: middle;
 }
 
 

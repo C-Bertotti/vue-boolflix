@@ -55,6 +55,8 @@
                         </ul>
                         <h3 v-if="film.overview !== ''">Overview</h3>
                         <p class="film__overview">{{ film.overview }}</p>
+                        <h3 class="film__language ">Lingua</h3>
+                        <img class="film__language" :src="'img/languages/' + languages[selectLanguage] + '.svg'" alt="">
                     </div>
                     <img class="film__poster" v-if="film.poster_path !== null " :src="'https://image.tmdb.org/t/p/w300' + film.poster_path" :alt="film.title">
                 </div>

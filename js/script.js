@@ -4,7 +4,13 @@ var app = new Vue (
         data: {
             isActive: null,
             searchedFilm: '',
-            films: []
+            films: [],
+            selectLanguage: 0,
+            languages: [
+                'it-IT',
+                'en-US',
+                'es-ES'
+            ]
         },
         methods: {
             activeSearchBar: function() {
@@ -15,7 +21,7 @@ var app = new Vue (
                     params: {
                         api_key: '63f8ca53972c84a81c6dff2fbb6513fb',
                         query: this.searchedFilm,
-                        language: 'it-IT'
+                        language: this.languages[this.selectLanguage]
                     }
                 })
                 .then( (returnedItems) => {
