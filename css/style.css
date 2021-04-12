@@ -149,20 +149,38 @@ main {
 }
 
 /* film-card */
+
 main .container {
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+section h4 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+section h4:first-of-type {
+    margin-top: 80px;
+}
+
+
+
+.film__wrapper {
+    display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 50px auto;
 }
 .film__card {
-    flex-basis: calc( (100% / 5) - 5px);
+    flex-basis: calc( (100% / 2) - 5px);
     border-radius: 7px;
     height: 320px;
-    margin-top: 50px;
+    margin-bottom: 50px;
     overflow: hidden;
     position: relative;
     background-color: rgb(34, 34, 34);
 }
+
 
 .film__poster {
     transition: opacity 0.2s;
@@ -225,7 +243,30 @@ img.film__language {
     vertical-align: middle;
 }
 
+@media screen and (max-width: 420px) {
+    .film__card {
+        flex-basis: 100%;
+    }
+}
 
+@media screen and (min-width: 768px) {
+    .film__card {
+        flex-basis: calc( (100% / 3) - 5px);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .film__card {
+        flex-basis: calc( (100% / 4) - 5px);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .film__card {
+        flex-basis: calc( (100% / 5) - 5px);
+    }
+}
+*/
 /* /film-card */
 
 /* /main */

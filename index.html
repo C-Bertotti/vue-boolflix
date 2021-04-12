@@ -39,27 +39,58 @@
         </header>
         <main>
             <div class="container">
-                <div class="film__card" v-for="film in films">
-                    <div class="film__info">
-                        <h3>Titolo</h3>
-                        <h2 class="film__title">{{ film.title}}</h2>
-                        <h3>Titolo originale</h3>
-                        <h2 class="film__title">{{ film.original_title}}</h2>
-                        <h3>Voto</h3>
-                        <ul class="film__rating">
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                        </ul>
-                        <h3 v-if="film.overview !== ''">Overview</h3>
-                        <p class="film__overview">{{ film.overview }}</p>
-                        <h3 class="film__language ">Lingua</h3>
-                        <img class="film__language" :src="'img/languages/' + languages[selectLanguage] + '.svg'" alt="">
+                <section id="films" v-if="films.length > 0">
+                    <h4>"{{ searchedFilm }}" in Film</h4>
+                    <div class="film__wrapper">
+                        <div class="film__card" v-for="film in films">
+                            <div class="film__info">
+                                <h3>Titolo</h3>
+                                <h2 class="film__title">{{ film.title }}</h2>
+                                <h3>Titolo originale</h3>
+                                <h2 class="film__title">{{ film.original_title }}</h2>
+                                <h3>Voto</h3>
+                                <ul class="film__rating">
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                </ul>
+                                <h3 v-if="film.overview !== ''">Overview</h3>
+                                <p class="film__overview">{{ film.overview }}</p>
+                                <h3 class="film__language title">Lingua</h3>
+                                <img class="film__language" :src="'img/languages/' + languages[selectLanguage] + '.svg'" alt="">
+                            </div>
+                            <img class="film__poster" v-if="film.poster_path !== null " :src="'https://image.tmdb.org/t/p/w300' + film.poster_path" :alt="film.title">
+                        </div>
                     </div>
-                    <img class="film__poster" v-if="film.poster_path !== null " :src="'https://image.tmdb.org/t/p/w300' + film.poster_path" :alt="film.title">
-                </div>
+                </section>
+                <section id="series" v-if="series.length > 0">
+                    <h4>"{{ searchedFilm }}" in Serie</h4>
+                    <div class="film__wrapper">
+                        <div class="film__card" v-for="serie in series">
+                            <div class="film__info">
+                                <h3>Titolo</h3>
+                                <h2 class="film__title">{{ serie.name }}</h2>
+                                <h3>Titolo originale</h3>
+                                <h2 class="film__title">{{ serie.original_name }}</h2>
+                                <h3>Voto</h3>
+                                <ul class="film__rating">
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                </ul>
+                                <h3 v-if="serie.overview !== ''">Overview</h3>
+                                <p class="film__overview">{{ serie.overview }}</p>
+                                <h3 class="film__language title">Lingua</h3>
+                                <img class="film__language" :src="'img/languages/' + languages[selectLanguage] + '.svg'" alt="">
+                            </div>
+                            <img class="film__poster" v-if="serie.poster_path !== null " :src="'https://image.tmdb.org/t/p/w300' + serie.poster_path" :alt="serie.name">
+                        </div>
+                    </div>
+                </section>
             </div>
 
         </main>
