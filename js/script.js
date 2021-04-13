@@ -12,7 +12,9 @@ var app = new Vue (
                 'it-IT',
                 'en-US',
                 'es-ES'
-            ]
+            ],
+            baseURLimage: 'https://image.tmdb.org/t/p/w',
+            setWidth: 300 
         },
         methods: {
             activeSearchBar: function() {
@@ -42,7 +44,7 @@ var app = new Vue (
                     this.series = returnedItems.data.results;
                     console.log(this.series);
                 });
-            }
+            },
 
         }
 

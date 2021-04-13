@@ -37,7 +37,7 @@
                 </div>
             </div>
         </header>
-        <main class="debug">
+        <main>
             <div class="container">
                 <section id="films" v-if="films.length > 0">
                     <h4>"{{ searchedFilm }}" in Film</h4>
@@ -50,11 +50,11 @@
                                 <h2 class="film__title">{{ film.original_title }}</h2>
                                 <h3>Voto</h3>
                                 <ul class="film__rating">
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
+                                    <li :class="film.vote_average > 0 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                    <li :class="film.vote_average > 2 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                    <li :class="film.vote_average > 4 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                    <li :class="film.vote_average > 6 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                    <li :class="film.vote_average > 8 ? 'active' : '' "><i class="fas fa-star"></i></li>
                                 </ul>
                                 <h3 v-if="film.overview !== ''">Overview</h3>
                                 <p class="film__overview">{{ film.overview }}</p>
@@ -66,7 +66,7 @@
                     </div>
                 </section>
                 <section id="series" v-if="series.length > 0">
-                    <h4>"{{ searchedFilm }}" in Serie</h4>
+                    <h4>"{{ searchedFilm }}" in Serie TV</h4>
                     <div class="film__wrapper">
                         <div class="film__card" v-for="serie in series">
                             <div class="film__info">
