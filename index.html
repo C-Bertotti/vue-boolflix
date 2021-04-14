@@ -39,6 +39,33 @@
         </header>
         <main>
             <div class="container">
+                <section id="popular">
+                    <h4>I più popolari</h4>
+                    <div class="film__wrapper">
+                        <div class="film__card" v-for="popular in populars">
+                            <div class="film__info">
+                                <h3>Titolo</h3>
+                                <h2 class="film__title">{{ popular.title }} {{ popular.name }}</h2>
+                                <h3>Titolo originale</h3>
+                                <h2 class="film__title">{{ popular.original_name }}</h2>
+                                <h3 v-if="popular.vote_count > 0">Voto</h3>
+                                <ul v-if="popular.vote_count > 0" class="film__rating">
+                                    <li :class="popular.vote_average > 0 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                    <li :class="popular.vote_average > 2 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                    <li :class="popular.vote_average > 4 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                    <li :class="popular.vote_average > 6 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                    <li :class="popular.vote_average > 8 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                </ul>
+                                <h3 v-if="popular.overview !== ''">Overview</h3>
+                                <p class="film__overview">{{ popular.overview }}</p>
+                                <h3 class="film__language title">Lingua</h3>
+                                <img class="film__language" :src="'img/languages/' + languages[selectLanguage] + '.svg'" alt="">
+                            </div>
+                            <img class="film__poster" v-if="popular.poster_path !== null " :src="'https://image.tmdb.org/t/p/w300' + popular.poster_path" :alt="popular.name || popular.title">
+                        </div>
+                    </div>
+                </section>
+
                 <section id="films" v-if="films.length > 0">
                     <h4>"{{ searchedFilm }}" in Film</h4>
                     <div class="film__wrapper">
@@ -48,8 +75,8 @@
                                 <h2 class="film__title">{{ film.title }}</h2>
                                 <h3>Titolo originale</h3>
                                 <h2 class="film__title">{{ film.original_title }}</h2>
-                                <h3>Voto</h3>
-                                <ul class="film__rating">
+                                <h3 v-if="film.vote_count > 0">Voto</h3>
+                                <ul v-if="film.vote_count > 0" class="film__rating">
                                     <li :class="film.vote_average > 0 ? 'active' : '' "><i class="fas fa-star"></i></li>
                                     <li :class="film.vote_average > 2 ? 'active' : '' "><i class="fas fa-star"></i></li>
                                     <li :class="film.vote_average > 4 ? 'active' : '' "><i class="fas fa-star"></i></li>
@@ -74,13 +101,13 @@
                                 <h2 class="film__title">{{ serie.name }}</h2>
                                 <h3>Titolo originale</h3>
                                 <h2 class="film__title">{{ serie.original_name }}</h2>
-                                <h3>Voto</h3>
-                                <ul class="film__rating">
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
-                                    <li><i class="fas fa-star"></i></li>
+                                <h3 v-if="serie.vote_count > 0">Voto</h3>
+                                <ul v-if="serie.vote_count > 0" class="film__rating">
+                                    <li :class="serie.vote_average > 0 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                    <li :class="serie.vote_average > 2 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                    <li :class="serie.vote_average > 4 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                    <li :class="serie.vote_average > 6 ? 'active' : '' "><i class="fas fa-star"></i></li>
+                                    <li :class="serie.vote_average > 8 ? 'active' : '' "><i class="fas fa-star"></i></li>
                                 </ul>
                                 <h3 v-if="serie.overview !== ''">Overview</h3>
                                 <p class="film__overview">{{ serie.overview }}</p>
