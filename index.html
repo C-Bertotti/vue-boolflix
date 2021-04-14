@@ -42,7 +42,7 @@
                 <section id="popular">
                     <h4>I più popolari</h4>
                     <div class="film__wrapper">
-                        <div class="film__card" v-for="popular in populars">
+                        <div class="film__card" v-for="(popular, i) in populars" v-if="i < 5">
                             <div class="film__info">
                                 <h3>Titolo</h3>
                                 <h2 class="film__title">{{ popular.title }} {{ popular.name }}</h2>
@@ -61,7 +61,7 @@
                                 <h3 class="film__language title">Lingua</h3>
                                 <img class="film__language" :src="'img/languages/' + languages[selectLanguage] + '.svg'" alt="">
                             </div>
-                            <img class="film__poster" v-if="popular.poster_path !== null " :src="'https://image.tmdb.org/t/p/w300' + popular.poster_path" :alt="popular.name || popular.title">
+                            <img class="film__poster" v-if="popular.poster_path !== null " :src="baseURLimage + setWidth + popular.poster_path" :alt="popular.name || popular.title">
                         </div>
                     </div>
                 </section>
@@ -69,7 +69,7 @@
                 <section id="films" v-if="films.length > 0">
                     <h4>"{{ searchedFilm }}" in Film</h4>
                     <div class="film__wrapper">
-                        <div class="film__card" v-for="film in films">
+                        <div class="film__card" v-for="(film, i) in films" v-if="i < 5">
                             <div class="film__info">
                                 <h3>Titolo</h3>
                                 <h2 class="film__title">{{ film.title }}</h2>
@@ -88,14 +88,14 @@
                                 <h3 class="film__language title">Lingua</h3>
                                 <img class="film__language" :src="'img/languages/' + languages[selectLanguage] + '.svg'" alt="">
                             </div>
-                            <img class="film__poster" v-if="film.poster_path !== null " :src="'https://image.tmdb.org/t/p/w300' + film.poster_path" :alt="film.title">
+                            <img class="film__poster" v-if="film.poster_path !== null " :src="baseURLimage + setWidth + film.poster_path" :alt="film.title">
                         </div>
                     </div>
                 </section>
                 <section id="series" v-if="series.length > 0">
                     <h4>"{{ searchedFilm }}" in Serie TV</h4>
                     <div class="film__wrapper">
-                        <div class="film__card" v-for="serie in series">
+                        <div class="film__card" v-for="(serie, i) in series" v-if="i < 5">
                             <div class="film__info">
                                 <h3>Titolo</h3>
                                 <h2 class="film__title">{{ serie.name }}</h2>
@@ -114,7 +114,7 @@
                                 <h3 class="film__language title">Lingua</h3>
                                 <img class="film__language" :src="'img/languages/' + languages[selectLanguage] + '.svg'" alt="">
                             </div>
-                            <img class="film__poster" v-if="serie.poster_path !== null " :src="'https://image.tmdb.org/t/p/w300' + serie.poster_path" :alt="serie.name">
+                            <img class="film__poster" v-if="serie.poster_path !== null " :src="baseURLimage + setWidth + serie.poster_path" :alt="serie.name">
                         </div>
                     </div>
                 </section>
